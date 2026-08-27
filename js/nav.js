@@ -17,6 +17,18 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ── Theme toggle ─────────────────────────────────────────── */
+  document.querySelectorAll('.theme-toggle').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const root = document.documentElement;
+      const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      const current = root.getAttribute('data-theme') || (systemDark ? 'dark' : 'light');
+      const next = current === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      try { localStorage.setItem('theme', next); } catch (e) {}
+    });
+  });
+
   /* ── Hamburger menu ──────────────────────────────────────── */
   const hamburger = document.getElementById('hamburger');
   const drawer    = document.getElementById('mobile-drawer');

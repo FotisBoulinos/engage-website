@@ -6,13 +6,21 @@
   <meta name="description" content="ENGAGE Events | Workshops, talks, and meetups hosted by the team.">
   <title>Events | ENGAGE</title>
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="ENGAGE" class="nav-logo-img"></a>
+      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="ENGAGE" class="nav-logo-img nav-logo-light"><img src="img/logo_white.png" alt="ENGAGE" class="nav-logo-img nav-logo-dark"></a>
       <ul class="nav-links">
         <li><a href="index.html"        class="nav-link" data-i18n="nav_home">Home</a></li>
         <li><a href="projects.html"     class="nav-link" data-i18n="nav_projects">Projects</a></li>
@@ -28,6 +36,10 @@
           <button class="lang-btn active" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="el">ΕΛ</button>
         </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span>
         </button>

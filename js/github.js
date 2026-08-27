@@ -11,7 +11,11 @@ const GITHUB_OWNER = 'harrytypou';
 const GITHUB_REPO  = 'engage-website-data';
 
 /* Raw content base URL — used for JSON files */
+/* LOCAL PREVIEW: pointed at the local ./data folder instead of GitHub, so
+   edits to the JSON files here show up without pushing anything online.
+   To go back to live GitHub data, restore the line below this comment. */
 const RAW_BASE = `https://raw.githubusercontent.com/${GITHUB_OWNER}/${GITHUB_REPO}/main`;
+// const RAW_BASE = '.';
 
 /* GitHub API base (kept for future use) */
 const API_BASE = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}`;

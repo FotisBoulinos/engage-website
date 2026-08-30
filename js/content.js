@@ -274,12 +274,13 @@ async function renderSponsorsPreview(containerId) {
 
 function sponsorCardHTML(s) {
   /* display_mode: "logo" shows an <img>, anything else shows the name as text */
+  const tierClass = `tier-card-${s.tier || 'bronze'}`;
   const inner = (s.display_mode === 'logo' && s.logo)
     ? `<img src="${escapeHTML(s.logo)}" alt="${escapeHTML(s.name)}" class="sponsor-card-logo" loading="lazy">`
     : `<span class="sponsor-card-name">${escapeHTML(s.name)}</span>`;
   const wrap = s.website
-    ? `<a href="${escapeHTML(s.website)}" target="_blank" rel="noopener" class="sponsor-card" title="${escapeHTML(s.name)}">${inner}</a>`
-    : `<div class="sponsor-card">${inner}</div>`;
+    ? `<a href="${escapeHTML(s.website)}" target="_blank" rel="noopener" class="sponsor-card ${tierClass}" title="${escapeHTML(s.name)}">${inner}</a>`
+    : `<div class="sponsor-card ${tierClass}">${inner}</div>`;
   return wrap;
 }
 

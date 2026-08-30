@@ -123,6 +123,22 @@ const LANG = {
     spon_loading:         'Loading sponsors...',
     spon_empty:           'No sponsors yet. Add entries to data/sponsors.json.',
 
+    /* Sponsor tiers overview (contact page) */
+    spon_tiers_box_title:   'Sponsorship tiers',
+    spon_tiers_box_sub:     'Pick the level that fits your organisation — every contribution makes a difference.',
+    spon_tier_gold_name:    'Gold Sponsor',
+    spon_tier_gold_amt:     '€1000+',
+    spon_tier_gold_desc:    'Maximum visibility and premium perks.',
+    spon_tier_silver_name:  'Silver Sponsor',
+    spon_tier_silver_amt:   '€500 – 1000',
+    spon_tier_silver_desc:  'Strong visibility and recognition.',
+    spon_tier_bronze_name:  'Bronze Sponsor',
+    spon_tier_bronze_amt:   '€100 – 500',
+    spon_tier_bronze_desc:  'Great support for growing partners.',
+    spon_tier_support_name: 'Support Sponsor',
+    spon_tier_support_amt:  '€1 – 100 or equipment/service',
+    spon_tier_support_desc: 'Every contribution helps our team grow.',
+
     /* Contact */
     contact_page_title: 'Get in touch',
     contact_page_sub:   'Whether you want to join, partner with us, or support our work — we\'d love to hear from you.',
@@ -156,6 +172,7 @@ const LANG = {
     spon_tier_gold_f: 'Gold',
     spon_tier_silv_f: 'Silver',
     spon_tier_bron_f: 'Bronze',
+    spon_tier_supp_f: 'Support',
     spon_tier_disc_f: 'Let\'s discuss',
     spon_message:     'Tell us about your company',
 
@@ -300,6 +317,22 @@ const LANG = {
     spon_loading:         'Φόρτωση χορηγών...',
     spon_empty:           'Δεν υπάρχουν χορηγοί ακόμα.',
 
+    /* Sponsor tiers overview (contact page) */
+    spon_tiers_box_title:   'Επίπεδα χορηγίας',
+    spon_tiers_box_sub:     'Επιλέξτε το επίπεδο που ταιριάζει στον οργανισμό σας — κάθε συνεισφορά κάνει τη διαφορά.',
+    spon_tier_gold_name:    'Χρυσός Χορηγός',
+    spon_tier_gold_amt:     '1000+ €',
+    spon_tier_gold_desc:    'Μέγιστη προβολή και κορυφαία προνόμια.',
+    spon_tier_silver_name:  'Αργυρός Χορηγός',
+    spon_tier_silver_amt:   '500 – 1000 €',
+    spon_tier_silver_desc:  'Ισχυρή προβολή και αναγνώριση.',
+    spon_tier_bronze_name:  'Χάλκινος Χορηγός',
+    spon_tier_bronze_amt:   '100 – 500 €',
+    spon_tier_bronze_desc:  'Πολύτιμη στήριξη για νέους συνεργάτες.',
+    spon_tier_support_name: 'Χορηγός Υποστήριξης',
+    spon_tier_support_amt:  '1 – 100 € ή εξοπλισμός/υπηρεσίες',
+    spon_tier_support_desc: 'Κάθε συνεισφορά βοηθά την ομάδα μας να εξελιχθεί.',
+
     /* Contact */
     contact_page_title: 'Επικοινωνία',
     contact_page_sub:   'Είτε θέλεις να γίνεις μέλος, να συνεργαστείς ή να μας υποστηρίξεις.',
@@ -333,6 +366,7 @@ const LANG = {
     spon_tier_gold_f: 'Χρυσό',
     spon_tier_silv_f: 'Αργυρό',
     spon_tier_bron_f: 'Χάλκινο',
+    spon_tier_supp_f: 'Υποστήριξης',
     spon_tier_disc_f: 'Να το συζητήσουμε',
     spon_message:     'Πείτε μας για την εταιρεία σας',
 

@@ -6,6 +6,14 @@
   <meta name="description" content="ENGAGE Sponsors | Our partners and how to become one.">
   <title>Sponsors | ENGAGE</title>
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .tier-section { margin-bottom: 52px; }
@@ -48,6 +56,52 @@
     .perk-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
     .perk-desc  { font-size: 13px; color: var(--text-muted); }
     .sponsor-card { display: flex; align-items: center; justify-content: center; text-decoration: none; }
+
+    /* Tier price sidebar */
+    .sponsors-layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 32px;
+      align-items: start;
+    }
+    .tiers-sidebar {
+      background: var(--bg-soft);
+      border: 1px solid var(--border-solid);
+      border-radius: var(--radius);
+      padding: 24px;
+      position: sticky;
+      top: 90px;
+    }
+    .tiers-sidebar-title { font-family: var(--font-display); font-size: 15px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .tiers-sidebar-sub { font-size: 12px; color: var(--text-muted); margin-bottom: 16px; }
+    .tier-tile-list { display: flex; flex-direction: column; gap: 8px; }
+    .tier-tile {
+      background: var(--bg);
+      border: 1px solid var(--border-solid);
+      border-radius: var(--radius-sm);
+      padding: 10px 12px;
+    }
+    .tier-tile-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      font-size: 11px; font-weight: 700; letter-spacing: 0.03em;
+      text-transform: uppercase; padding: 4px 9px;
+      border-radius: 20px; margin-bottom: 6px;
+    }
+    .tier-tile-dot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .tier-tile-badge.tier-gold   { background: rgba(251,191,36,0.15); color: #b45309; }
+    .tier-tile-badge.tier-gold   .tier-tile-dot { background: #f59e0b; }
+    .tier-tile-badge.tier-silver { background: rgba(148,163,184,0.15); color: #475569; }
+    .tier-tile-badge.tier-silver .tier-tile-dot { background: #94a3b8; }
+    .tier-tile-badge.tier-bronze { background: rgba(180,83,9,0.10); color: #92400e; }
+    .tier-tile-badge.tier-bronze .tier-tile-dot { background: #b45309; }
+    .tier-tile-badge.tier-support { background: rgba(99,51,255,0.10); color: var(--purple); }
+    .tier-tile-badge.tier-support .tier-tile-dot { background: var(--purple); }
+    .tier-tile-amount { font-family: var(--font-display); font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: 6px; }
+    .tier-tile-desc { font-size: 11px; font-weight: 700; color: var(--text-muted); line-height: 1.5; }
+    @media (max-width: 900px) {
+      .sponsors-layout { grid-template-columns: 1fr; }
+      .tiers-sidebar { position: static; }
+    }
     @media (max-width: 640px) {
       .perks-grid { grid-template-columns: 1fr; }
       .cta-box    { padding: 32px 20px; }
@@ -58,7 +112,7 @@
 
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="ENGAGE" class="nav-logo-img"></a>
+      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="ENGAGE" class="nav-logo-img nav-logo-light"><img src="img/logo_white.png" alt="ENGAGE" class="nav-logo-img nav-logo-dark"></a>
       <ul class="nav-links">
         <li><a href="index.html"        class="nav-link" data-i18n="nav_home">Home</a></li>
         <li><a href="projects.html"     class="nav-link" data-i18n="nav_projects">Projects</a></li>
@@ -74,6 +128,10 @@
           <button class="lang-btn active" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="el">ΕΛ</button>
         </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span>
         </button>
@@ -111,7 +169,36 @@
   <section class="section">
     <div class="container">
 
-      <div id="sponsors-container"></div>
+      <div class="sponsors-layout">
+        <aside class="tiers-sidebar reveal">
+          <div class="tiers-sidebar-title" data-i18n="spon_tiers_box_title">Sponsorship tiers</div>
+          <div class="tiers-sidebar-sub" data-i18n="spon_tiers_box_sub">Pick the level that fits your organisation — every contribution makes a difference.</div>
+          <div class="tier-tile-list">
+            <div class="tier-tile">
+              <div class="tier-tile-badge tier-gold"><span class="tier-tile-dot"></span><span data-i18n="spon_tier_gold_name">Gold Sponsor</span></div>
+              <div class="tier-tile-amount" data-i18n="spon_tier_gold_amt">€1000+</div>
+              <div class="tier-tile-desc" data-i18n="spon_tier_gold_desc">Maximum visibility and premium perks.</div>
+            </div>
+            <div class="tier-tile">
+              <div class="tier-tile-badge tier-silver"><span class="tier-tile-dot"></span><span data-i18n="spon_tier_silver_name">Silver Sponsor</span></div>
+              <div class="tier-tile-amount" data-i18n="spon_tier_silver_amt">€500 – 1000</div>
+              <div class="tier-tile-desc" data-i18n="spon_tier_silver_desc">Strong visibility and recognition.</div>
+            </div>
+            <div class="tier-tile">
+              <div class="tier-tile-badge tier-bronze"><span class="tier-tile-dot"></span><span data-i18n="spon_tier_bronze_name">Bronze Sponsor</span></div>
+              <div class="tier-tile-amount" data-i18n="spon_tier_bronze_amt">€100 – 500</div>
+              <div class="tier-tile-desc" data-i18n="spon_tier_bronze_desc">Great support for growing partners.</div>
+            </div>
+            <div class="tier-tile">
+              <div class="tier-tile-badge tier-support"><span class="tier-tile-dot"></span><span data-i18n="spon_tier_support_name">Support Sponsor</span></div>
+              <div class="tier-tile-amount" data-i18n="spon_tier_support_amt">€1 – 100 or equipment/service</div>
+              <div class="tier-tile-desc" data-i18n="spon_tier_support_desc">Every contribution helps our team grow.</div>
+            </div>
+          </div>
+        </aside>
+
+        <div id="sponsors-container"></div>
+      </div>
 
       <div class="cta-box reveal">
         <div class="sec-label" style="justify-content:center;" data-i18n="sec_spon_label">Partners</div>

@@ -6,6 +6,14 @@
   <meta name="description" content="ENGAGE Contact | Join, sponsor, or partner with us.">
   <title>Contact | ENGAGE</title>
   <link rel="icon" type="image/svg+xml" href="img/favicon.svg">
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
   <link rel="stylesheet" href="css/style.css">
   <style>
     .contact-layout {
@@ -50,6 +58,48 @@
     }
     .contact-panel { display: block; }
     .contact-panel.hidden { display: none; }
+    .tiers-box {
+      background: var(--bg-soft);
+      border: 1px solid var(--border-solid);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 32px;
+    }
+    .tiers-box-title { font-family: var(--font-display); font-size: 17px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+    .tiers-box-sub { font-size: 13px; color: var(--text-muted); margin-bottom: 20px; }
+    .tiers-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .tier-card {
+      background: var(--bg);
+      border: 1px solid var(--border-solid);
+      border-radius: var(--radius-sm);
+      padding: 14px 16px;
+    }
+    .tier-card-header {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 12px; flex-wrap: wrap;
+      margin-bottom: 6px;
+    }
+    .tier-card-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.03em;
+      text-transform: uppercase; padding: 6px 12px;
+      border-radius: 20px;
+    }
+    .tier-card-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+    .tier-gold   { background: rgba(251,191,36,0.15); color: #b45309; }
+    .tier-gold   .tier-card-dot { background: #f59e0b; }
+    .tier-silver { background: rgba(148,163,184,0.15); color: #475569; }
+    .tier-silver .tier-card-dot { background: #94a3b8; }
+    .tier-bronze { background: rgba(180,83,9,0.10); color: #92400e; }
+    .tier-bronze .tier-card-dot { background: #b45309; }
+    .tier-support { background: rgba(99,51,255,0.10); color: var(--purple); }
+    .tier-support .tier-card-dot { background: var(--purple); }
+    .tier-card-amount { font-family: var(--font-display); font-size: 19px; font-weight: 700; color: var(--text); white-space: nowrap; }
+    .tier-card-desc { font-size: 12.5px; font-weight: 700; color: var(--text-muted); line-height: 1.5; }
     @media (max-width: 860px) {
       .contact-layout { grid-template-columns: 1fr; gap: 36px; }
       .contact-sidebar { order: 2; }
@@ -63,7 +113,7 @@
 
   <nav class="nav">
     <div class="container nav-inner">
-      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="ENGAGE" class="nav-logo-img"></a>
+      <a href="index.html" class="nav-logo"><img src="img/logo.png" alt="ENGAGE" class="nav-logo-img nav-logo-light"><img src="img/logo_white.png" alt="ENGAGE" class="nav-logo-img nav-logo-dark"></a>
       <ul class="nav-links">
         <li><a href="index.html"        class="nav-link" data-i18n="nav_home">Home</a></li>
         <li><a href="projects.html"     class="nav-link" data-i18n="nav_projects">Projects</a></li>
@@ -79,6 +129,10 @@
           <button class="lang-btn active" data-lang="en">EN</button>
           <button class="lang-btn" data-lang="el">ΕΛ</button>
         </div>
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+          <svg class="icon-sun" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"></path></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+        </button>
         <button class="hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
           <span class="ham-line"></span><span class="ham-line"></span><span class="ham-line"></span>
         </button>
@@ -189,6 +243,40 @@
 
           <!-- SPONSOR FORM -->
           <div class="contact-panel hidden" data-panel="sponsor">
+            <div class="tiers-box">
+              <div class="tiers-box-title" data-i18n="spon_tiers_box_title">Sponsorship tiers</div>
+              <div class="tiers-box-sub" data-i18n="spon_tiers_box_sub">Pick the level that fits your organisation — every contribution makes a difference.</div>
+              <div class="tiers-list">
+                <div class="tier-card">
+                  <div class="tier-card-header">
+                    <div class="tier-card-badge tier-gold"><span class="tier-card-dot"></span><span data-i18n="spon_tier_gold_name">Gold Sponsor</span></div>
+                    <div class="tier-card-amount" data-i18n="spon_tier_gold_amt">€1000+</div>
+                  </div>
+                  <div class="tier-card-desc" data-i18n="spon_tier_gold_desc">Maximum visibility and premium perks.</div>
+                </div>
+                <div class="tier-card">
+                  <div class="tier-card-header">
+                    <div class="tier-card-badge tier-silver"><span class="tier-card-dot"></span><span data-i18n="spon_tier_silver_name">Silver Sponsor</span></div>
+                    <div class="tier-card-amount" data-i18n="spon_tier_silver_amt">€500 – 1000</div>
+                  </div>
+                  <div class="tier-card-desc" data-i18n="spon_tier_silver_desc">Strong visibility and recognition.</div>
+                </div>
+                <div class="tier-card">
+                  <div class="tier-card-header">
+                    <div class="tier-card-badge tier-bronze"><span class="tier-card-dot"></span><span data-i18n="spon_tier_bronze_name">Bronze Sponsor</span></div>
+                    <div class="tier-card-amount" data-i18n="spon_tier_bronze_amt">€100 – 500</div>
+                  </div>
+                  <div class="tier-card-desc" data-i18n="spon_tier_bronze_desc">Great support for growing partners.</div>
+                </div>
+                <div class="tier-card">
+                  <div class="tier-card-header">
+                    <div class="tier-card-badge tier-support"><span class="tier-card-dot"></span><span data-i18n="spon_tier_support_name">Support Sponsor</span></div>
+                    <div class="tier-card-amount" data-i18n="spon_tier_support_amt">€1 – 100 or equipment/service</div>
+                  </div>
+                  <div class="tier-card-desc" data-i18n="spon_tier_support_desc">Every contribution helps our team grow.</div>
+                </div>
+              </div>
+            </div>
             <form id="form-sponsor" novalidate>
               <div class="form-grid">
                 <div class="form-group">
@@ -217,6 +305,7 @@
                   <option value="gold"    data-i18n="spon_tier_gold_f">Gold</option>
                   <option value="silver"  data-i18n="spon_tier_silv_f">Silver</option>
                   <option value="bronze"  data-i18n="spon_tier_bron_f">Bronze</option>
+                  <option value="support" data-i18n="spon_tier_supp_f">Support</option>
                   <option value="discuss" data-i18n="spon_tier_disc_f">Let's discuss</option>
                 </select>
               </div>

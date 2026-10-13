@@ -233,9 +233,9 @@ async function renderSponsorsPage(containerId) {
       container.innerHTML = `<div class="empty-state"><div class="empty-state-icon">🤝</div><p class="empty-state-title">${t('spon_empty')}</p></div>`;
       return;
     }
-    const tiers = ['gold', 'silver', 'bronze'];
-    const tierKeys = { gold: 'spon_tier_gold', silver: 'spon_tier_silver', bronze: 'spon_tier_bronze' };
-    const tierClasses = { gold: 'tier-gold', silver: 'tier-silver', bronze: 'tier-bronze' };
+    const tiers = ['gold', 'silver', 'bronze', 'support'];
+    const tierKeys = { gold: 'spon_tier_gold', silver: 'spon_tier_silver', support: 'spon_tier_support', bronze: 'spon_tier_bronze' };
+    const tierClasses = { gold: 'tier-gold', silver: 'tier-silver', support: 'tier-support', bronze: 'tier-bronze' };
     let html = '';
     tiers.forEach(tier => {
       const group = sponsors.filter(s => (s.tier || 'bronze') === tier);
@@ -274,7 +274,7 @@ async function renderSponsorsPreview(containerId) {
 
 function sponsorCardHTML(s) {
   /* display_mode: "logo" shows an <img>, anything else shows the name as text */
-  const tierClass = `tier-card-${s.tier || 'bronze'}`;
+  const tierClass = `sponsor-tier-${['gold', 'silver', 'support', 'bronze'].includes(s.tier) ? s.tier : 'bronze'}`;
   const inner = (s.display_mode === 'logo' && s.logo)
     ? `<img src="${escapeHTML(s.logo)}" alt="${escapeHTML(s.name)}" class="sponsor-card-logo" loading="lazy">`
     : `<span class="sponsor-card-name">${escapeHTML(s.name)}</span>`;
